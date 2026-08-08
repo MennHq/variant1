@@ -17,7 +17,7 @@ import {
   ChevronRight,
   Instagram,
   Facebook,
-  Linkedin,
+  MessageCircle,
   ArrowRight,
   Menu,
   CheckCircle,
@@ -112,7 +112,7 @@ const useCountUp = (target: number, duration: number = 1500, trigger: boolean) =
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeTab, setActiveTab] = useState("WORK");
+  const [activeTab, setActiveTab] = useState("PORTFOLIO");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Modal States
@@ -290,20 +290,23 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo Brand Block */}
           <div 
-            onClick={() => handleNavClick("home", "WORK")}
+            onClick={() => handleNavClick("home", "PORTFOLIO")}
             className="flex items-center space-x-3 cursor-pointer group"
           >
-            {/* Elegant Serif Monogram Logo */}
-            <div className="w-12 h-12 flex items-center justify-center border border-[#C5A059] rounded-none bg-gradient-to-br from-[#1F1A17] to-[#111010] relative group-hover:border-[#F8F8F8] transition-all duration-500">
-              <span className="font-serif text-xl text-[#C5A059] font-bold tracking-tight absolute transform group-hover:scale-110 transition-transform duration-500">AH</span>
-              <div className="absolute inset-0.5 border border-[#C5A059]/20"></div>
+            {/* Elegant WebP Image Logo */}
+            <div className="w-14 h-14 flex items-center justify-center relative overflow-hidden">
+              <img 
+                src="https://i.postimg.cc/qqxT1nHB/logo.webp" 
+                alt="Al-Hammad Interiors Logo" 
+                className="w-full h-full object-contain absolute transform group-hover:scale-110 transition-transform duration-500" 
+              />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-lg md:text-xl font-bold tracking-wider text-[#F8F8F8] group-hover:text-[#C5A059] transition-colors duration-500">
-                AL HAMMAD
+              <span className="font-serif text-lg md:text-xl font-bold tracking-wider text-[#F8F8F8] group-hover:text-[#C5A059] transition-colors duration-500 leading-tight">
+                Al-Hammad
               </span>
-              <span className="text-[9px] font-sans tracking-[0.3em] text-[#C5A059] font-medium leading-none">
-                INTERIORS & ARCHITECTS
+              <span className="text-[9px] font-sans tracking-[0.18em] text-[#C5A059] font-medium leading-none uppercase">
+                Interiors & Architecture
               </span>
             </div>
           </div>
@@ -311,17 +314,15 @@ export default function App() {
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center space-x-10 text-xs font-medium tracking-[0.2em] text-[#F8F8F8]/80">
             {[
-              { label: "WORK", section: "projects" },
-              { label: "SERVICES", section: "trust" },
-              { label: "STUDIO", section: "video-feature" },
-              { label: "JOURNAL", section: "instagram" },
-              { label: "CONTACT", section: "contact" },
+              { label: "Portfolio", section: "projects" },
+              { label: "About Us & Showroom", section: "trust" },
+              { label: "Contact Us", section: "contact" },
             ].map((item) => (
               <button
                 key={item.label}
-                id={`nav-${item.label.toLowerCase()}`}
+                id={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                 onClick={() => handleNavClick(item.section, item.label)}
-                className={`relative py-1 cursor-pointer transition-colors hover:text-[#C5A059] uppercase ${
+                className={`relative py-1 cursor-pointer transition-colors hover:text-[#C5A059] ${
                   activeTab === item.label ? "text-[#C5A059] font-semibold" : ""
                 }`}
               >
@@ -371,15 +372,13 @@ export default function App() {
           >
             <div className="flex flex-col space-y-8">
               {[
-                { label: "WORK", section: "projects" },
-                { label: "SERVICES", section: "trust" },
-                { label: "STUDIO", section: "video-feature" },
-                { label: "JOURNAL", section: "instagram" },
-                { label: "CONTACT", section: "contact" },
+                { label: "Portfolio", section: "projects" },
+                { label: "About Us & Showroom", section: "trust" },
+                { label: "Contact Us", section: "contact" },
               ].map((item) => (
                 <button
                   key={item.label}
-                  id={`mobile-nav-${item.label.toLowerCase()}`}
+                  id={`mobile-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={() => handleNavClick(item.section, item.label)}
                   className="text-2xl font-serif tracking-widest text-left text-[#F8F8F8] hover:text-[#C5A059] transition-colors border-b border-[#1F1A17] pb-3"
                 >
@@ -401,9 +400,9 @@ export default function App() {
               </button>
               
               <div className="flex justify-center space-x-6 text-[#C5A059]">
-                <a href="#instagram" className="p-2 border border-[#2C2420]/55 hover:border-[#C5A059] transition-all"><Instagram className="w-5 h-5" /></a>
-                <a href="#facebook" className="p-2 border border-[#2C2420]/55 hover:border-[#C5A059] transition-all"><Facebook className="w-5 h-5" /></a>
-                <a href="#linkedin" className="p-2 border border-[#2C2420]/55 hover:border-[#C5A059] transition-all"><Linkedin className="w-5 h-5" /></a>
+                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-2 border border-[#2C2420]/55 hover:border-[#C5A059] transition-all" aria-label="Instagram"><Instagram className="w-5 h-5" /></a>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="p-2 border border-[#2C2420]/55 hover:border-[#C5A059] transition-all" aria-label="Facebook"><Facebook className="w-5 h-5" /></a>
+                <a href="https://wa.me/923028212429" target="_blank" rel="noreferrer" className="p-2 border border-[#2C2420]/55 hover:border-[#C5A059] transition-all" aria-label="WhatsApp"><MessageCircle className="w-5 h-5" /></a>
               </div>
             </div>
           </motion.div>
@@ -459,7 +458,7 @@ export default function App() {
               className="border-t border-[#2C2420]/60 pt-6 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
               <div className="text-xs tracking-[0.25em] text-[#F8F8F8]/90 font-medium font-sans">
-                AL HAMMAD INTERIORS & ARCHITECTS | KARACHI • PAKISTAN
+                AL-HAMMAD INTERIORS & ARCHITECTURE | KARACHI • PAKISTAN
               </div>
 
               {/* Tag badges */}
@@ -472,6 +471,16 @@ export default function App() {
               </div>
             </motion.div>
 
+            {/* Elegant Brand Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.5 }}
+              className="text-[#EBE6DD]/90 font-serif text-base sm:text-lg md:text-xl font-light italic mb-8 max-w-3xl leading-relaxed"
+            >
+              "Designing bespoke interior ecosystems radiating luxury warm-wood aesthetics. Complete turnkey execution across DHA, Clifton, Gulshan, and PECHS in Karachi."
+            </motion.p>
+
             {/* Main CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -481,7 +490,7 @@ export default function App() {
             >
               <button
                 id="hero-cta-discover"
-                onClick={() => handleNavClick("projects", "WORK")}
+                onClick={() => handleNavClick("projects", "Portfolio")}
                 className="group relative px-8 py-4 border border-[#C5A059] bg-[#111010]/30 hover:bg-[#C5A059] hover:text-[#111010] transition-all duration-500 text-xs tracking-[0.25em] font-medium font-sans flex items-center justify-center space-x-2 cursor-pointer uppercase"
               >
                 <span>DISCOVER OUR WORK</span>
@@ -500,10 +509,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* TRUST BANNER SECTION (Light Cream Background) */}
+      {/* ABOUT US & SHOWROOM SECTION (Light Cream Background) */}
       <section 
         id="trust" 
-        className="bg-[#EBE6DD] text-[#222222] py-20 px-6 md:px-12 relative overflow-hidden"
+        className="bg-[#EBE6DD] text-[#222222] py-24 px-6 md:px-12 relative overflow-hidden"
       >
         {/* Subtle decorative grid background pattern */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
@@ -511,26 +520,68 @@ export default function App() {
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#222222]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
-          {/* Large Stat Metric Column */}
-          <div id="trust-stat-column" className="md:col-span-4 flex flex-col md:border-r border-[#222222]/15 pr-6">
-            <span className="font-serif text-7xl md:text-9xl font-bold tracking-tight text-[#1F1A17] leading-none">
-              12+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Core Philosophy */}
+          <div id="showroom-about-column" className="lg:col-span-6 flex flex-col justify-center">
+            <span className="text-xs tracking-[0.4em] text-[#C5A059] uppercase font-bold block mb-3 font-sans">
+              ABOUT AL-HAMMAD
             </span>
-            <span className="text-xs tracking-[0.3em] font-bold text-[#C5A059] mt-2 uppercase font-sans">
-              YEARS OF MASTERY
-            </span>
-          </div>
-
-          {/* Core Philosophy Column */}
-          <div id="trust-philosophy-column" className="md:col-span-8 flex flex-col justify-center">
-            <h2 className="font-serif text-3xl md:text-5xl font-medium tracking-tight leading-snug mb-6 text-[#1F1A17]">
-              Creating timeless luxury residences across Karachi.
+            <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-[#1F1A17]">
+              Bespoke Interior Ecosystems
             </h2>
             <div className="w-24 h-[2px] bg-[#C5A059] mb-6"></div>
-            <p className="text-sm md:text-base leading-relaxed text-[#222222]/80 max-w-2xl font-light font-sans">
-              From majestic villas in DHA and Gulshan to architectural landmarks across Bahria, our award-winning studio is recognized for unparalleled structural integrity, seamless execution, and deep luxury. We serve discerning clients who value privacy, prestige, and custom engineering.
+            <p className="text-base md:text-lg leading-relaxed text-[#222222] font-serif mb-6 italic">
+              "Designing bespoke interior ecosystems radiating luxury warm-wood aesthetics. Complete turnkey execution across DHA, Clifton, Gulshan, and PECHS in Karachi."
             </p>
+            <p className="text-sm md:text-base leading-relaxed text-[#222222]/80 font-light font-sans">
+              Our award-winning design house is recognized for unparalleled structural integrity, exotic materials, and custom-engineered woodwork. We serve clients who value legacy, prestige, and seamless executive execution.
+            </p>
+          </div>
+
+          {/* Right Column: Gulshan Showroom Card */}
+          <div id="showroom-card-column" className="lg:col-span-6 bg-[#1F1A17] text-[#F8F8F8] p-8 md:p-10 border border-[#2C2420]/30 shadow-2xl relative">
+            <div className="absolute top-0 right-0 bg-[#C5A059] text-[#111010] text-[10px] tracking-widest font-bold font-sans px-4 py-1 uppercase">
+              SHOWROOM VISITS
+            </div>
+            
+            <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#F8F8F8] mb-4">
+              GULSHAN SHOWROOM
+            </h3>
+            <div className="w-12 h-[1px] bg-[#C5A059] mb-6"></div>
+            
+            <div className="space-y-6 text-xs font-sans">
+              <div className="flex items-start space-x-3">
+                <MapPin className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
+                <p className="text-[#F8F8F8]/85 leading-relaxed tracking-wide">
+                  Showroom # R-69, Railway Housing Society Project, Block 13D-1, Gulshan-e-Iqbal, Karachi 75300, Pakistan
+                </p>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <Clock className="w-5 h-5 text-[#C5A059] shrink-0" />
+                <p className="text-[#F8F8F8]/85 tracking-wide font-medium">
+                  Open • Mon to Sat (11:00 AM - 9:00 PM)
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-[#2C2420]/30 flex flex-wrap gap-4">
+              <a
+                href="https://wa.me/923028212429"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#C5A059] text-[#111010] hover:bg-[#F8F8F8] transition-colors font-bold uppercase tracking-wider text-[10px] px-5 py-3 flex items-center space-x-2"
+              >
+                <MessageCircle className="w-4 h-4 shrink-0" />
+                <span>WHATSAPP DIRECT</span>
+              </a>
+              <button
+                onClick={() => setIsBookingOpen(true)}
+                className="border border-[#F8F8F8]/20 hover:border-[#C5A059] transition-colors font-semibold uppercase tracking-wider text-[10px] px-5 py-3 cursor-pointer"
+              >
+                BOOK EXCLUSIVE APPOINTMENT
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -610,7 +661,7 @@ export default function App() {
           <div className="mt-16 text-center">
             <button
               id="projects-cta-all"
-              onClick={() => handleNavClick("projects", "WORK")}
+              onClick={() => handleNavClick("projects", "Portfolio")}
               className="text-xs tracking-[0.3em] text-[#C5A059] hover:text-[#F8F8F8] font-bold uppercase transition-all duration-300 cursor-pointer border-b border-[#C5A059]/30 hover:border-[#F8F8F8] pb-1.5"
             >
               EXPLORE ALL PROJECTS &gt;
@@ -744,7 +795,7 @@ export default function App() {
         {/* Left Side: Text and CTA Form trigger */}
         <div id="cta-text-side" className="lg:col-span-7 py-20 px-8 md:px-16 flex flex-col justify-center max-w-3xl">
           <span className="text-xs tracking-[0.4em] text-[#C5A059] uppercase font-bold block mb-4 font-sans">
-            WORK WITH US
+            GET IN TOUCH
           </span>
           <h2 className="font-serif text-4xl md:text-6xl font-bold tracking-tight text-[#F8F8F8] leading-[1.1] mb-8">
             LET'S CREATE SOMETHING EXCEPTIONAL.
@@ -761,11 +812,11 @@ export default function App() {
             </button>
             <a
               id="cta-contact-phone"
-              href="tel:+923001234567"
+              href="tel:03028212429"
               className="px-8 py-4 border border-[#F8F8F8]/20 hover:border-[#C5A059] transition-all duration-500 text-xs tracking-[0.25em] font-semibold text-center uppercase font-sans flex items-center justify-center space-x-2"
             >
               <Phone className="w-4 h-4 text-[#C5A059]" />
-              <span>CALL DIRECT +92 300 1234567</span>
+              <span>CALL DIRECT: 0302 8212429</span>
             </a>
           </div>
         </div>
@@ -787,54 +838,73 @@ export default function App() {
       >
         <div className="max-w-7xl mx-auto">
           {/* Main Footer layout */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 pb-16 border-b border-[#1F1A17]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-[#1F1A17]">
             {/* Left: Logo & Brand Name */}
-            <div id="footer-brand" className="md:col-span-4 flex flex-col space-y-6">
+            <div id="footer-brand" className="lg:col-span-4 flex flex-col space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 flex items-center justify-center border border-[#C5A059] bg-[#1F1A17]">
-                  <span className="font-serif text-xl text-[#C5A059] font-bold">AH</span>
+                {/* Brand WebP logo container */}
+                <div className="w-12 h-12 flex items-center justify-center border border-[#C5A059] bg-[#1F1A17] p-1 overflow-hidden">
+                  <img src="https://i.postimg.cc/qqxT1nHB/logo.webp" alt="Al-Hammad Interiors Logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-serif text-lg font-bold tracking-wider text-[#F8F8F8]">
-                    AL HAMMAD
+                  <span className="font-serif text-lg font-bold tracking-wider text-[#F8F8F8] leading-tight">
+                    Al-Hammad
                   </span>
-                  <span className="text-[9px] font-sans tracking-[0.3em] text-[#C5A059] font-medium leading-none">
-                    INTERIORS & ARCHITECTS
+                  <span className="text-[9px] font-sans tracking-[0.18em] text-[#C5A059] font-medium leading-none uppercase">
+                    Interiors & Architecture
                   </span>
                 </div>
               </div>
-              <p className="text-xs leading-relaxed text-[#F8F8F8]/60 max-w-xs font-sans">
-                Karachi's premier architectural design house. Specializing in high-end structural layouts, ultra-luxury living transformations, and bespoke turnkey executions.
+              <p className="text-xs leading-relaxed text-[#F8F8F8]/60 max-w-sm font-sans">
+                Designing bespoke interior ecosystems radiating luxury warm-wood aesthetics. Complete turnkey execution across DHA, Clifton, Gulshan, and PECHS in Karachi.
               </p>
             </div>
 
-            {/* Center: Address & Contact Details */}
-            <div id="footer-contact-details" className="md:col-span-5 flex flex-col space-y-4">
+            {/* Center: Showroom Address & Operating Hours */}
+            <div id="footer-showroom-details" className="lg:col-span-5 flex flex-col space-y-4">
               <h4 className="text-xs tracking-[0.25em] text-[#C5A059] font-bold uppercase font-sans mb-2">
-                HEAD OFFICE
+                GULSHAN SHOWROOM
               </h4>
               <div className="flex items-start space-x-3 text-xs font-sans">
                 <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
-                <span>AL HAMMAD INTERIORS & ARCHITECTS, MAIN KHAYABAN-E-SHAHBAZ, DHA PHASE 6, KARACHI, PAKISTAN</span>
+                <span>Showroom # R-69, Railway Housing Society Project, Block 13D-1, Gulshan-e-Iqbal, Karachi 75300, Pakistan</span>
               </div>
               <div className="flex items-center space-x-3 text-xs font-sans">
-                <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>+92 300 1234567</span>
+                <Clock className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span>Open • Mon to Sat (11:00 AM - 9:00 PM)</span>
               </div>
-              <div className="flex items-center space-x-3 text-xs font-sans">
-                <Mail className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <span>info@alhammadinteriors.com</span>
+              
+              {/* Quick Navigation list requested */}
+              <div className="pt-4 border-t border-[#1F1A17]">
+                <h5 className="text-[9px] tracking-[0.2em] text-[#C5A059] font-bold uppercase mb-2">NAVIGATION</h5>
+                <div className="flex space-x-6 text-[11px] font-medium">
+                  <button onClick={() => handleNavClick("projects", "Portfolio")} className="hover:text-[#C5A059] transition-colors cursor-pointer">Portfolio</button>
+                  <button onClick={() => handleNavClick("trust", "About Us & Showroom")} className="hover:text-[#C5A059] transition-colors cursor-pointer">About Us & Showroom</button>
+                  <button onClick={() => handleNavClick("contact", "Contact Us")} className="hover:text-[#C5A059] transition-colors cursor-pointer">Contact Us</button>
+                </div>
               </div>
             </div>
 
-            {/* Right: Follow Us Social Connections */}
-            <div id="footer-social" className="md:col-span-3 flex flex-col space-y-4">
+            {/* Right: Follow Us Social Connections & direct contacts */}
+            <div id="footer-social" className="lg:col-span-3 flex flex-col space-y-4">
               <h4 className="text-xs tracking-[0.25em] text-[#C5A059] font-bold uppercase font-sans mb-2">
-                FOLLOW US
+                GET IN TOUCH
               </h4>
-              <p className="text-xs text-[#F8F8F8]/60 font-sans mb-2">
-                Stay updated on our latest high-end residential handovers.
-              </p>
+              <div className="space-y-2 text-xs font-sans text-[#F8F8F8]/80 mb-2">
+                <div className="flex items-center space-x-2">
+                  <Phone className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <a href="tel:03028212429" className="hover:text-[#C5A059]">0302 8212429</a>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MessageCircle className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <a href="https://wa.me/923028212429" target="_blank" rel="noreferrer" className="hover:text-[#C5A059]">WhatsApp: +923028212429</a>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Mail className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <a href="mailto:hammadinteriors@gmail.com" className="hover:text-[#C5A059]">hammadinteriors@gmail.com</a>
+                </div>
+              </div>
+
               <div className="flex space-x-3">
                 <a 
                   id="footer-social-instagram"
@@ -842,6 +912,7 @@ export default function App() {
                   target="_blank" 
                   rel="noreferrer" 
                   className="w-10 h-10 border border-[#2C2420] hover:border-[#C5A059] flex items-center justify-center hover:text-[#C5A059] transition-colors"
+                  aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -851,17 +922,19 @@ export default function App() {
                   target="_blank" 
                   rel="noreferrer" 
                   className="w-10 h-10 border border-[#2C2420] hover:border-[#C5A059] flex items-center justify-center hover:text-[#C5A059] transition-colors"
+                  aria-label="Facebook"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
                 <a 
-                  id="footer-social-linkedin"
-                  href="https://linkedin.com" 
+                  id="footer-social-whatsapp"
+                  href="https://wa.me/923028212429" 
                   target="_blank" 
                   rel="noreferrer" 
                   className="w-10 h-10 border border-[#2C2420] hover:border-[#C5A059] flex items-center justify-center hover:text-[#C5A059] transition-colors"
+                  aria-label="WhatsApp"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -869,7 +942,7 @@ export default function App() {
 
           {/* Sub Footer Legal Credits */}
           <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] tracking-widest text-[#F8F8F8]/40 font-sans">
-            <span>© 2026 AL HAMMAD INTERIORS & ARCHITECTS. ALL RIGHTS RESERVED.</span>
+            <span>© 2026 AL-HAMMAD INTERIORS & ARCHITECTURE. ALL RIGHTS RESERVED.</span>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <a href="#home" className="hover:text-[#C5A059] transition-colors">TERMS OF USE</a>
               <a href="#home" className="hover:text-[#C5A059] transition-colors">PRIVACY POLICY</a>
@@ -1173,7 +1246,7 @@ export default function App() {
                           id="booking-input-phone"
                           type="tel"
                           required
-                          placeholder="e.g. +92 300 1234567"
+                          placeholder="e.g. 0302 8212429"
                           value={bookingForm.phone}
                           onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
                           className="w-full bg-[#111010] border border-[#2C2420]/80 rounded-none p-3.5 text-[#F8F8F8] placeholder-[#F8F8F8]/30 focus:border-[#C5A059] focus:outline-none transition-colors"
